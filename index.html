@@ -1,0 +1,63 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Conveyor Documentation | QR Demo</title>
+  <style>
+    :root { color-scheme: light; font-family: system-ui, -apple-system, Segoe UI, Arial, sans-serif; }
+    * { box-sizing: border-box; }
+    body { background: #f3f5f8; color: #1d2935; margin: 0; padding: 24px 14px; }
+    main { margin: 28px auto; max-width: 520px; padding: 28px; border-radius: 16px; background: white; box-shadow: 0 5px 30px #172c3a14; }
+    .eyebrow { font-size: 12px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: #556577; }
+    h1 { font-size: 26px; line-height: 1.2; margin: 10px 0; }
+    p { line-height: 1.55; }
+    label { display: block; font-weight: 650; margin: 26px 0 8px; }
+    input { width: 100%; padding: 13px; border: 1px solid #aeb9c6; border-radius: 8px; font-size: 17px; }
+    button, .action { display: block; width: 100%; border: 0; background: #1662b4; color: white; border-radius: 8px; padding: 14px; margin-top: 14px; font-size: 16px; text-align: center; text-decoration: none; font-weight: 700; cursor: pointer; }
+    button:hover, .action:hover { background: #0e4988; }
+    .subtle { color: #596777; font-size: 14px; }
+    .notice { background: #fff7e7; border-left: 4px solid #cb8622; padding: 12px; font-size: 13px; margin-top: 24px; line-height: 1.5; }
+    .error { color: #b52820; min-height: 1.4em; }
+    [hidden] { display: none !important; }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="eyebrow">Equipment Documentation Demo</div>
+    <h1>Intelligrated Conveyor</h1>
+    <p class="subtle">Scan-to-documentation prototype for maintenance teams.</p>
+
+    <form id="gate">
+      <label for="password">Demo password</label>
+      <input id="password" type="password" autocomplete="off" required autofocus>
+      <button type="submit">Continue</button>
+      <p id="message" class="error" role="status" aria-live="polite"></p>
+    </form>
+
+    <section id="docs" hidden>
+      <h2>Documentation link</h2>
+      <p>Open the Intelligrated knowledge base. Existing vendor login requirements still apply.</p>
+      <a class="action" href="https://dashboard.intelligrated.com/knowledgebase/default.aspx" target="_blank" rel="noopener noreferrer">Open Intelligrated Knowledge Base</a>
+    </section>
+
+    <div class="notice"><strong>Demonstration only.</strong> This page is publicly accessible. Its browser-based password prompt does not provide real security; do not publish confidential documents or sensitive links here. Use an IT-approved authentication gateway for production.</div>
+  </main>
+  <script>
+    // DEMO ONLY: This value is visible to anyone who inspects the page source.
+    const DEMO_PASSWORD = 'HOU06rme';
+    document.getElementById('gate').addEventListener('submit', function (event) {
+      event.preventDefault();
+      const entered = document.getElementById('password').value;
+      if (entered === DEMO_PASSWORD) {
+        document.getElementById('gate').hidden = true;
+        document.getElementById('docs').hidden = false;
+      } else {
+        document.getElementById('message').textContent = 'Incorrect demo password.';
+      }
+    });
+  </script>
+</body>
+</html>
